@@ -15,20 +15,19 @@ variables:
     PIP_DISABLE_PIP_VERSION_CHECK: 1
     DISPATCH_CONF: "/etc/dispatch"
     DISPATCH_BUILD: "develop"
-    NODE_VERSION: "12.7.0"
-    GOSU_VERSION: "1.11"
-    TINI_VERSION: "0.18.0"
-
 
 # The build-time dependencies of the app.
-#dependencies:
+dependencies:
+  nodejs:
+    yarn: "*"
+    # apt-get install nodejs, yarnpkg
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
       set -eux
       pip install -r requirements-base.txt
-      pip install dispatch
+      pip install -e .
 # The size of the persistent disk of the application (in MB).
 disk: 1024
 
