@@ -1,0 +1,55 @@
+# This file describes an application. You can have multiple applications
+# in the same project.
+#
+# See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
+
+# The name of this app. Must be unique within a project.
+name: dispatch
+
+# The runtime the application uses.
+type: "python:3.8"
+
+variables:
+  env:
+    PIP_NO_CACHE_DIR: off
+    PIP_DISABLE_PIP_VERSION_CHECK: 1
+    DISPATCH_CONF: "/etc/dispatch"
+    DISPATCH_BUILD: "develop"
+    NODE_VERSION: "12.7.0"
+    GOSU_VERSION: "1.11"
+    TINI_VERSION: "0.18.0"
+
+
+# The build-time dependencies of the app.
+#dependencies:
+
+# The hooks executed at various points in the lifecycle of the application.
+hooks:
+    build: |
+      set -eux
+      cd dispatch/
+      pip install -r requirements-base.txt
+      pip install dispatch
+# The size of the persistent disk of the application (in MB).
+disk: 1024
+
+# The relationships of the application with services or other applications.
+#
+# The left-hand side is the name of the relationship as it will be exposed
+# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
+# side is in the form `<service name>:<endpoint name>`.
+relationships:
+    database: "database:postgresql"
+
+# The configuration of app when it is exposed to the web.
+web:
+    commands:
+      start: "server start dispatch.main:app --host=0.0.0.0"
+
+mounts:
+    tmp:
+        source: local
+        source_path: tmp
+    logs:
+        source: local
+        source_path: logs
