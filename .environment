@@ -11,9 +11,10 @@ export DISPATCH_DOMAIN=master-7rqtwti-2hounbfgfsnu6.eu-3.platformsh.site
 export DATABASE_HOSTNAME=postgres
 export DATABASE_CREDENTIALS=postgres:dispatch
 export POSTGRES_PASSWORD=dispatch
-export JWKS_URL=
 export DISPATCH_HELP_EMAIL=diogo.matsubara@platform.sh
 export DISPATCH_HELP_SLACK_CHANNEL=
+export DISPATCH_PKCE_AUTH_ENABLED=False
+export DISPATCH_HEADER_AUTH_ENABLED=False
 # Incident configuration
 export INCIDENT_NOTIFICATION_CONVERSATIONS=
 export INCIDENT_NOTIFICATION_DISTRIBUTION_LISTS=
