@@ -22,7 +22,7 @@ import store from "@/store"
 const requestor = new FetchRequestor()
 const routes = publicRoute.concat(protectedRoute)
 
-const pkce_auth = env.getBool(process.env.VUE_APP_DISPATCH_PKCE_AUTH) || true
+const pkce_auth = false
 const clientId = process.env.VUE_APP_DISPATCH_CLIENT_ID
 const openIdConnectUrl = process.env.VUE_APP_DISPATCH_OPEN_ID_CONNECT_URL
 const scope = "openid profile email"
@@ -101,7 +101,6 @@ router.beforeEach((to, from, next) => {
 
   NProgress.start()
   if (!pkce_auth) {
-    console.error(pkce_auth)
     next()
   }
 
