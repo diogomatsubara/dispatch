@@ -50,7 +50,7 @@ relationships:
 # The configuration of app when it is exposed to the web.
 web:
     commands:
-      start: "dispatch server start dispatch.main:app --host=0.0.0.0 --port=80"
+      start: "dispatch server start dispatch.main:app --host=0.0.0.0 --port=$PORT"
 
 mounts:
     tmp:
