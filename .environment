@@ -15,8 +15,8 @@ export DISPATCH_HELP_EMAIL=diogo.matsubara@platform.sh
 export DISPATCH_HELP_SLACK_CHANNEL=
 export DISPATCH_PKCE_AUTH=False
 export DISPATCH_HEADER_AUTH=False
-export VUE_APP_DISPATCH_PKCE_AUTH=false
-export VUE_APP_DISPATCH_OPEN_ID_CONNECT_URL="https://accounts.google.com/"
+export VUE_APP_DISPATCH_PKCE_AUTH=False
+export VUE_APP_DISPATCH_OPEN_ID_CONNECT_URL="https://accounts.foobar.com/"
 export VUE_APP_DISPATCH_CLIENT_ID="dispatch-psh"
 # Incident configuration
 export INCIDENT_CONVERSATION_COMMANDS_REFERENCE_DOCUMENT_ID=
