@@ -101,6 +101,7 @@ router.beforeEach((to, from, next) => {
 
   NProgress.start()
   if (!pkce_auth) {
+    console.error(pkce_auth)
     next()
   }
 
