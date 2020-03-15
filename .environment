@@ -1,0 +1,49 @@
+# This is necessary for nvm to work.
+unset NPM_CONFIG_PREFIX
+# Disable npm update notifier; being a read only system it will probably annoy you.
+export NO_UPDATE_NOTIFIER=1
+# This loads nvm for general usage.
+export NVM_DIR="$PLATFORM_APP_DIR/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# For configuration details, see: https://hawkins.gitbook.io/dispatch/configuration/app
+# General
+export DISPATCH_DOMAIN=master-7rqtwti-2hounbfgfsnu6.eu-3.platformsh.site
+export DATABASE_HOSTNAME=postgres
+export DATABASE_CREDENTIALS=postgres:dispatch
+export POSTGRES_PASSWORD=dispatch
+export JWKS_URL=
+export DISPATCH_HELP_EMAIL=diogo.matsubara@platform.sh
+export DISPATCH_HELP_SLACK_CHANNEL=
+# Incident configuration
+export INCIDENT_NOTIFICATION_CONVERSATIONS=
+export INCIDENT_NOTIFICATION_DISTRIBUTION_LISTS=
+export INCIDENT_STORAGE_ARCHIVAL_FOLDER_ID=
+export INCIDENT_STORAGE_DRIVE_ID_SLUG=
+export INCIDENT_STORAGE_INCIDENT_REVIEW_FILE_ID=
+export INCIDENT_DOCUMENT_INVESTIGATION_SHEET_ID=
+export INCIDENT_FAQ_DOCUMENT_ID=
+# Plugin configuration
+# Slack
+export SLACK_APP_USER_SLUG=
+export SLACK_API_BOT_TOKEN=
+export SLACK_SIGNING_SECRET=
+export SLACK_WORKSPACE_NAME=
+# Google
+export GOOGLE_SERVICE_ACCOUNT_PROJECT_ID=
+export GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY_ID=
+export GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY=
+export GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL=
+export GOOGLE_SERVICE_ACCOUNT_CLIENT_ID=
+export GOOGLE_SERVICE_ACCOUNT_DELEGATED_ACCOUNT=
+export GOOGLE_DEVELOPER_KEY=
+export GOOGLE_DOMAIN=
+# Jira
+export JIRA_BROWSER_URL=https://platformsh.atlassian.net
+export JIRA_PASSWORD=
+export JIRA_USERNAME=
+export JIRA_API_URL=
+export JIRA_PROJECT_KEY=
+export JIRA_ISSUE_TYPE_ID=
+# PagerDuty
+export PAGERDUTY_API_KEY=
+export PAGERDUTY_API_FROM_EMAIL=
