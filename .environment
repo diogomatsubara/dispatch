@@ -16,8 +16,10 @@ export DISPATCH_HELP_SLACK_CHANNEL=
 export DISPATCH_PKCE_AUTH=False
 export DISPATCH_HEADER_AUTH=False
 export VUE_APP_DISPATCH_PKCE_AUTH=False
-export VUE_APP_DISPATCH_OPEN_ID_CONNECT_URL="https://accounts.google.com/"
-export VUE_APP_DISPATCH_CLIENT_ID="969451058635-4ng6emal4fg9mb5ganeo2q4r7idcc7k3.apps.googleusercontent.com"
+#export VUE_APP_DISPATCH_OPEN_ID_CONNECT_URL="https://accounts.google.com/"
+export VUE_APP_DISPATCH_OPEN_ID_CONNECT_URL="https://dev-527244.okta.com/oauth2/default/"
+#export VUE_APP_DISPATCH_CLIENT_ID="969451058635-4ng6emal4fg9mb5ganeo2q4r7idcc7k3.apps.googleusercontent.com"
+export VUE_APP_DISPATCH_CLIENT_ID="0oa40w6jshyQDQqkt4x6"
 
 # Incident configuration
 export INCIDENT_CONVERSATION_COMMANDS_REFERENCE_DOCUMENT_ID=
