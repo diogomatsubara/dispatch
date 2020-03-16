@@ -8,7 +8,7 @@ export NVM_DIR="$PLATFORM_APP_DIR/.nvm"
 # For configuration details, see: https://hawkins.gitbook.io/dispatch/configuration/app
 # General
 export DISPATCH_DOMAIN=master-7rqtwti-2hounbfgfsnu6.eu-3.platformsh.site
-export DATABASE_HOSTNAME=$(echo $PLATFORM_RELATIONSHIPS| base64 --decode | jq '.database[] | .hostname')
+export DATABASE_HOSTNAME=$(echo $PLATFORM_RELATIONSHIPS| base64 --decode | jq '.database[] | .host')
 DB_USERNAME=$(echo $PLATFORM_RELATIONSHIPS| base64 --decode | jq '.database[] | .username')
 DB_PASSWORD=$(echo $PLATFORM_RELATIONSHIPS| base64 --decode | jq '.database[] | .password')
 export DATABASE_CREDENTIALS=${DB_USERNAME}:${DB_PASSWORD}
