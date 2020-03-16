@@ -17,6 +17,7 @@ export DISPATCH_PKCE_AUTH=True
 export JWKS_URL="https://dev-527244.okta.com/oauth2/default/v1/keys"
 export DISPATCH_HEADER_AUTH=False
 export VUE_APP_DISPATCH_PKCE_AUTH=True
+# These need to be defined under src/dispatch/static/dispatch/.env
 export VUE_APP_DISPATCH_OPEN_ID_CONNECT_URL="https://dev-527244.okta.com/oauth2/default/"
 export VUE_APP_DISPATCH_CLIENT_ID="0oa40w6jshyQDQqkt4x6"
 
