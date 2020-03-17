@@ -36,6 +36,9 @@ hooks:
       pip install -r requirements-dev.txt
       python setup.py bdist_wheel
       pip install dist/*.whl
+    deploy: |
+      dispatch database init
+      dispatch database upgrade
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024
