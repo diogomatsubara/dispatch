@@ -15,7 +15,7 @@ export DISPATCH_HELP_EMAIL=diogo.matsubara@platform.sh
 export DISPATCH_HELP_SLACK_CHANNEL=
 export DISPATCH_PKCE_AUTH=False
 export JWKS_URL="https://dev-527244.okta.com/oauth2/default/v1/keys"
-export DISPATCH_HEADER_AUTH=False
+export DISPATCH_HEADER_AUTH_ENABLED=True
 export DISPATCH_AUTH_HEADER="diogo.matsubara@platform.sh"
 # These need to be defined under src/dispatch/static/dispatch/.env
 export VUE_APP_DISPATCH_PKCE_AUTH=False
