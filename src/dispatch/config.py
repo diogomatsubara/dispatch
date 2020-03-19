@@ -56,7 +56,7 @@ if DISPATCH_PKCE_AUTH_ENABLED:
 
 if DISPATCH_HEADER_AUTH_ENABLED:
     if not DISPATCH_AUTH_HEADER_KEY:
-        raise Exception("DISPATCH_AUTH_HEADER_KEY must be when when DISPATCH_HEADER_AUTH_ENABLED")
+        raise Exception("DISPATCH_HEADER_AUTH must be set when DISPATCH_HEADER_AUTH_ENABLED")
 
 # static files
 DEFAULT_STATIC_DIR = os.path.join(
