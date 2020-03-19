@@ -20,6 +20,7 @@ export const publicRoute = [
   }
 ]
 
+const enable_auth = false
 export const protectedRoute = [
   {
     path: "/",
@@ -38,14 +39,14 @@ export const protectedRoute = [
   {
     path: "/incidents/status",
     component: DefaultLayout,
-    meta: { title: "Status", icon: "", requiresAuth: true },
+    meta: { title: "Status", icon: "", requiresAuth: enable_auth },
     component: () => import(/* webpackChunkName: "incidents-status" */ "@/incident/Status.vue")
   },
 
   {
     path: "/incidents/report",
     component: DefaultLayout,
-    meta: { title: "Report", icon: "", requiresAuth: true },
+    meta: { title: "Report", icon: "", requiresAuth: enable_auth },
     component: () => import(/* webpackChunkName: "incidents-report" */ "@/incident/ReportForm.vue")
   },
 
@@ -53,7 +54,7 @@ export const protectedRoute = [
   {
     path: "/dashboard",
     component: DefaultLayout,
-    meta: { title: "Dashboard", icon: "view_compact", group: "dashboard", requiresAuth: true },
+    meta: { title: "Dashboard", icon: "view_compact", group: "dashboard", requiresAuth: enable_auth },
     children: [
       {
         path: "/dashboard",
@@ -66,7 +67,7 @@ export const protectedRoute = [
   {
     path: "/incidents",
     component: DefaultLayout,
-    meta: { title: "Incidents", icon: "view_compact", group: "incidents", requiresAuth: true },
+    meta: { title: "Incidents", icon: "view_compact", group: "incidents", requiresAuth: enable_auth },
     children: [
       {
         path: "/incidents",
@@ -78,7 +79,7 @@ export const protectedRoute = [
   {
     path: "/services",
     component: DefaultLayout,
-    meta: { title: "Services", icon: "view_compact", group: "contacts", requiresAuth: true },
+    meta: { title: "Services", icon: "view_compact", group: "contacts", requiresAuth: enable_auth },
     children: [
       {
         path: "/services",
@@ -90,7 +91,7 @@ export const protectedRoute = [
   {
     path: "/individuals",
     component: DefaultLayout,
-    meta: { title: "Individuals", icon: "view_compact", group: "contacts", requiresAuth: true },
+    meta: { title: "Individuals", icon: "view_compact", group: "contacts", requiresAuth: enable_auth },
     children: [
       {
         path: "/individuals",
@@ -102,7 +103,7 @@ export const protectedRoute = [
   {
     path: "/teams",
     component: DefaultLayout,
-    meta: { title: "Teams", icon: "view_compact", group: "contacts", requiresAuth: true },
+    meta: { title: "Teams", icon: "view_compact", group: "contacts", requiresAuth: enable_auth },
     children: [
       {
         path: "/teams",
@@ -114,7 +115,7 @@ export const protectedRoute = [
   {
     path: "/applications",
     component: DefaultLayout,
-    meta: { title: "Applications", icon: "view_compact", group: "contacts", requiresAuth: true },
+    meta: { title: "Applications", icon: "view_compact", group: "contacts", requiresAuth: enable_auth },
     children: [
       {
         path: "/applications",
@@ -127,7 +128,7 @@ export const protectedRoute = [
   {
     path: "/search",
     component: DefaultLayout,
-    meta: { title: "Search", icon: "view_compact", group: "search", requiresAuth: true },
+    meta: { title: "Search", icon: "view_compact", group: "search", requiresAuth: enable_auth },
     children: [
       {
         path: "/search",
@@ -140,7 +141,7 @@ export const protectedRoute = [
   {
     path: "/documents",
     component: DefaultLayout,
-    meta: { title: "Documents", icon: "view_compact", group: "knowledge", requiresAuth: true },
+    meta: { title: "Documents", icon: "view_compact", group: "knowledge", requiresAuth: enable_auth },
     children: [
       {
         path: "/Documents",
@@ -152,7 +153,7 @@ export const protectedRoute = [
   {
     path: "/definitions",
     component: DefaultLayout,
-    meta: { title: "Definitions", icon: "view_compact", group: "knowledge", requiresAuth: true },
+    meta: { title: "Definitions", icon: "view_compact", group: "knowledge", requiresAuth: enable_auth },
     children: [
       {
         path: "/Definitions",
@@ -164,7 +165,7 @@ export const protectedRoute = [
   {
     path: "/tasks",
     component: DefaultLayout,
-    meta: { title: "Tasks", icon: "view_compact", group: "incident", requiresAuth: true },
+    meta: { title: "Tasks", icon: "view_compact", group: "incident", requiresAuth: enable_auth },
     children: [
       {
         path: "/tasks",
@@ -177,7 +178,7 @@ export const protectedRoute = [
   {
     path: "/terms",
     component: DefaultLayout,
-    meta: { title: "Terms", icon: "view_compact", group: "knowledge", requiresAuth: true },
+    meta: { title: "Terms", icon: "view_compact", group: "knowledge", requiresAuth: enable_auth },
     children: [
       {
         path: "/terms",
@@ -189,7 +190,7 @@ export const protectedRoute = [
   {
     path: "/policies",
     component: DefaultLayout,
-    meta: { title: "Policies", icon: "view_compact", group: "routing", requiresAuth: true },
+    meta: { title: "Policies", icon: "view_compact", group: "routing", requiresAuth: enable_auth },
     children: [
       {
         path: "/policies",
@@ -201,7 +202,7 @@ export const protectedRoute = [
   {
     path: "/route",
     component: DefaultLayout,
-    meta: { title: "Route", icon: "view_compact", group: "routing", requiresAuth: true },
+    meta: { title: "Route", icon: "view_compact", group: "routing", requiresAuth: enable_auth },
     children: [
       {
         path: "/route",
@@ -217,7 +218,7 @@ export const protectedRoute = [
       title: "Incident Types",
       icon: "view_compact",
       group: "configuration",
-      requiresAuth: true
+      requiresAuth: enable_auth
     },
     children: [
       {
