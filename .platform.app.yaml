@@ -37,7 +37,8 @@ hooks:
       python setup.py bdist_wheel
       pip install dist/*.whl
     deploy: |
-      dispatch database init
+      alembic merge
+      #dispatch database init
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024
