@@ -46,27 +46,11 @@ def get_current_user(*, request: Request):
         status_code=HTTP_401_UNAUTHORIZED, detail="Could not validate credentials"
     )
 
-    user_email = from_bearer_token(request)
+    if DISPATCH_AUTH_HEADER_KEY:
+        user_email = from_headers(request)
+    else:
+        user_email = from_bearer_token(request)
 
     if not user_email:
         raise credentials_exception
-    authorization: str = request.headers.get("Authorization")
-    scheme, param = get_authorization_scheme_param(authorization)
-    if not authorization or scheme.lower() != "bearer":
-        raise credentials_exception
-
-    token = authorization.split()[1]
-
-    # TODO should we warm this cache up on application start?
-    try:
-        key = jwk_key_cache[JWKS_URL]
-    except Exception:
-        key = requests.get(JWKS_URL).json()["keys"][0]
-        jwk_key_cache[JWKS_URL] = key
-
-    try:
-        data = jwt.decode(token, key)
-    except JWTError:
-        raise credentials_exception
-
-    return data["email"]
+    return user_email

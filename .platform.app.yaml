@@ -33,8 +33,11 @@ hooks:
       pip install --upgrade setuptools wheel
       pip install --upgrade pip
       pip install -r requirements-base.txt
+      pip install -r requirements-dev.txt
       python setup.py bdist_wheel
       pip install dist/*.whl
+    deploy: |
+      dispatch database init
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024
@@ -45,7 +48,7 @@ disk: 1024
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
-    database: "database:postgresql"
+    database: "db:postgresql"
 
 # The configuration of app when it is exposed to the web.
 web:

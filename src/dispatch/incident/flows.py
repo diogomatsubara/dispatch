@@ -278,15 +278,6 @@ def update_document(
     log.debug("The external collaboration document has been updated.")
 
 
-def update_incident_status(db_session, incident: Incident, status: str):
-    """Updates the status of the incident (active, stable, or closed)."""
-    incident.status = status
-    db_session.add(incident)
-    db_session.commit()
-
-    log.debug(f"The incident has been marked as {status}.")
-
-
 def add_participant_to_conversation(
     participant_email: str, incident_id: int, db_session: SessionLocal
 ):
@@ -405,7 +396,7 @@ def incident_create_flow(*, incident_id: int, checkpoint: str = None, db_session
     }
 
     conversation_commands_reference_document = {
-        "name": "Incident FAQ",
+        "name": "Incident Conversation Commands Reference Document",
         "resource_id": INCIDENT_CONVERSATION_COMMANDS_REFERENCE_DOCUMENT_ID,
         "weblink": f"https://docs.google.com/document/d/{INCIDENT_CONVERSATION_COMMANDS_REFERENCE_DOCUMENT_ID}",
         "resource_type": INCIDENT_RESOURCE_CONVERSATION_COMMANDS_REFERENCE_DOCUMENT,
@@ -517,6 +508,8 @@ def incident_active_flow(incident_id: int, command: Optional[dict] = None, db_se
         incident_type=incident.incident_type.name,
         status=IncidentStatus.active.lower(),
     )
+
+    log.debug(f"We have updated the status of the external ticket to {IncidentStatus.active}.")
 
 
 @background_task
@@ -701,6 +694,10 @@ def incident_update_flow(
     if previous_incident.status.name != incident.status:
         conversation_topic_change = True
 
+    if conversation_topic_change:
+        # we update the conversation topic
+        set_conversation_topic(incident)
+
     if notify:
         send_incident_change_notifications(
             incident,
@@ -708,10 +705,6 @@ def incident_update_flow(
             previous_incident.incident_type.name,
             previous_incident.incident_priority.name,
         )
-
-    if conversation_topic_change:
-        # we update the conversation topic
-        set_conversation_topic(incident)
 
     # we get the incident document
     incident_document = get_document(
@@ -876,9 +869,6 @@ def incident_add_or_reactivate_participant_flow(
     user_email: str, incident_id: int, role: ParticipantRoleType = None, db_session=None
 ):
     """Runs the add or reactivate incident participant flow."""
-    # We get information about the individual
-    contact_plugin = plugins.get(INCIDENT_PLUGIN_CONTACT_SLUG)
-    individual_info = contact_plugin.get(user_email)
 
     participant = participant_service.get_by_incident_id_and_email(
         db_session=db_session, incident_id=incident_id, email=user_email
@@ -886,7 +876,7 @@ def incident_add_or_reactivate_participant_flow(
 
     if participant:
         if participant.is_active:
-            log.debug(f"{individual_info['fullname']} is already an active participant.")
+            log.debug(f"{user_email} is already an active participant.")
         else:
             # we reactivate the participant
             reactivated = participant_flows.reactivate_participant(

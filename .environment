@@ -7,17 +7,25 @@ export NVM_DIR="$PLATFORM_APP_DIR/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # For configuration details, see: https://hawkins.gitbook.io/dispatch/configuration/app
 # General
+export LOG_LEVEL=DEBUG
 export DISPATCH_DOMAIN=master-7rqtwti-2hounbfgfsnu6.eu-3.platformsh.site
-export DATABASE_HOSTNAME=postgres
-export DATABASE_CREDENTIALS=postgres:dispatch
-export POSTGRES_PASSWORD=dispatch
+export DATABASE_HOSTNAME=$(echo $PLATFORM_RELATIONSHIPS| base64 --decode | jq -r '.database[] | .host')
+DB_USERNAME=$(echo $PLATFORM_RELATIONSHIPS| base64 --decode | jq -r '.database[] | .username')
+DB_PASSWORD=$(echo $PLATFORM_RELATIONSHIPS| base64 --decode | jq -r '.database[] | .password')
+export DATABASE_CREDENTIALS=${DB_USERNAME}:${DB_PASSWORD}
+export DATABASE_PORT=$(echo $PLATFORM_RELATIONSHIPS| base64 --decode | jq -r '.database[] | .port')
+export DATABASE_NAME=$(echo $PLATFORM_RELATIONSHIPS| base64 --decode | jq -r '.database[] | .path')
 export DISPATCH_HELP_EMAIL=diogo.matsubara@platform.sh
 export DISPATCH_HELP_SLACK_CHANNEL=
 export DISPATCH_PKCE_AUTH=False
-export DISPATCH_HEADER_AUTH=False
-export VUE_APP_DISPATCH_PKCE_AUTH=false
-export VUE_APP_DISPATCH_OPEN_ID_CONNECT_URL="https://foobar.com"
-export VUE_APP_DISPATCH_CLIENT_ID="dispatch-psh"
+export JWKS_URL="https://dev-527244.okta.com/oauth2/default/v1/keys"
+export DISPATCH_HEADER_AUTH_ENABLED=True
+export DISPATCH_AUTH_HEADER="Authorization"
+# These need to be defined under src/dispatch/static/dispatch/.env
+export VUE_APP_DISPATCH_PKCE_AUTH=False
+export VUE_APP_DISPATCH_OPEN_ID_CONNECT_URL="https://dev-527244.okta.com/oauth2/default/"
+export VUE_APP_DISPATCH_CLIENT_ID="0oa40w6jshyQDQqkt4x6"
+
 # Incident configuration
 export INCIDENT_CONVERSATION_COMMANDS_REFERENCE_DOCUMENT_ID=
 export INCIDENT_NOTIFICATION_CONVERSATIONS=
